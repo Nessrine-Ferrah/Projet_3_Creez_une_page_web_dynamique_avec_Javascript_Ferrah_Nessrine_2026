@@ -94,9 +94,15 @@ nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
 }
-
-li:hover {
+nav li a {
+	color: inherit;
+    text-decoration: none;
+}
+li a:hover {
 	color: #B1663C;
+}
+.active {
+	font-weight: 700;
 }
 #introduction {
 	display: flex;
