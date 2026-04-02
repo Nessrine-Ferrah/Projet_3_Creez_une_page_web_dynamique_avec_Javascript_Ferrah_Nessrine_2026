@@ -2,7 +2,29 @@
 const reponseWorks = await fetch('http://localhost:5678/api/works');
 const projets = await reponseWorks.json();
 
+// Fonction qui génère toute la page web
+function genererProjets(projets) {
+     // Récupération de l'élément du DOM qui accueillera les projets
+        const gallery = document.querySelector(".gallery");
 
+        projets.forEach(projet => {
+        const projetElement = document.createElement("figure");
+
+        const imageElement = document.createElement("img");
+        imageElement.src = projet.imageUrl;
+
+        const figcaptionElement = document.createElement("figcaption");
+        figcaptionElement.innerText = projet.title;
+        //Rattachement de nos balises au DOM
+        projetElement.appendChild(imageElement);
+        projetElement.appendChild(figcaptionElement);
+        // On rattache la balise figure a la div galerry
+        gallery.appendChild(projetElement);
+    });
+}
+
+// Premier affichage de la page
+genererProjets(projets);
 
 
 
