@@ -2,7 +2,7 @@
 const reponseWorks = await fetch('http://localhost:5678/api/works');
 const projets = await reponseWorks.json();
 
-// Fonction qui génère toute la page web
+   // Fonction qui génère toute la page web
 function genererProjets(projets) {
      // Récupération de l'élément du DOM qui accueillera les projets
         const gallery = document.querySelector(".gallery");
@@ -27,6 +27,11 @@ function genererProjets(projets) {
 genererProjets(projets);
 
 
+const boutonTous = document.querySelector(".btn-tous");
+    boutonTous.addEventListener("click",function () {
+    document.querySelector(".gallery").innerHTML = "";
+    genererProjets(projets);
+   });
 
 
 
