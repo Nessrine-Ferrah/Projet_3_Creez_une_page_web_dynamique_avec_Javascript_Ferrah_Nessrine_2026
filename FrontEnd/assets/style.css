@@ -243,19 +243,26 @@ footer nav ul {
 	justify-content: center;
 	gap: 10px;
 	width: 100%;
-	margin-bottom: 40px;
+	margin-bottom: 50px;
+	margin-top: 50px;
 }
 	
 .btn-filtres button {
 	border-radius: 60px;
 	border: 1px solid #1D6154;
+	background-color: transparent;
 	text-align: center;
 	font-family: 'Syne';
 	font-size: 16px;
+	color: #1D6154;
 	height: 37px;	
+	min-width: 100px;
+	padding: 0px 10px 0px 10px;
 }
 
-.btn-tous {
-	background-color:#1D6154 ;
-	color: white;
+
+.btn-active {
+	background-color:#1D6154 !important;
+	color: white !important;
 }
+

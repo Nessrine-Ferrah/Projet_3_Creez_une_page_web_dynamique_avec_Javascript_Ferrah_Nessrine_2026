@@ -26,11 +26,19 @@ function genererProjets(projets) {
 // Premier affichage de la page
 genererProjets(projets);
 
+// Fonction utilitaire : gérer le bouton actif
+function activerBouton(bouton) {
+    document.querySelectorAll(".btn-filtres button").forEach(btn => {
+        btn.classList.remove("btn-active");
+    });
+    bouton.classList.add("btn-active");
+}
 
 const boutonTous = document.querySelector(".btn-tous");
     boutonTous.addEventListener("click",function () {
     document.querySelector(".gallery").innerHTML = "";
     genererProjets(projets);
+    activerBouton(boutonTous);
    });
 
 
@@ -50,5 +58,10 @@ for (let i = 0;  i < category.length; i++) {
    });
     document.querySelector(".gallery").innerHTML = "";
     genererProjets(projetsFiltrees);
+    activerBouton(event.target);
 });
 }
+
+// Activer le bouton "Tous" au chargement
+activerBouton(boutonTous);
+
