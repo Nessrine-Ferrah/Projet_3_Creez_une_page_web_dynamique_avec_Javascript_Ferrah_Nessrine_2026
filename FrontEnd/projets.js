@@ -34,6 +34,21 @@ const boutonTous = document.querySelector(".btn-tous");
    });
 
 
-
-
-
+const bouttonFiltrer = document.querySelector(".btn-filtres")
+const reponseCategories = await fetch('http://localhost:5678/api/categories');
+const category = await reponseCategories.json();
+for (let i = 0;  i < category.length; i++) {
+    const boutton = category[i];
+    const bouttonElements = document.createElement("button");
+    bouttonElements.dataset.id = boutton.id;
+    bouttonElements.innerText = boutton.name
+    bouttonFiltrer.appendChild(bouttonElements);
+    bouttonElements.addEventListener("click", function (event){
+        const idCategories = Number(event.target.dataset.id);
+        const projetsFiltrees = projets.filter(function (projet){
+            return projet.categoryId === idCategories;
+   });
+    document.querySelector(".gallery").innerHTML = "";
+    genererProjets(projetsFiltrees);
+});
+}
