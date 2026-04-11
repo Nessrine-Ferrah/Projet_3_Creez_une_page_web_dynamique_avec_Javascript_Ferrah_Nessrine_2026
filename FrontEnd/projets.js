@@ -42,26 +42,47 @@ const boutonTous = document.querySelector(".btn-tous");
    });
 
 
-const bouttonFiltrer = document.querySelector(".btn-filtres")
+
 const reponseCategories = await fetch('http://localhost:5678/api/categories');
-const category = await reponseCategories.json();
-for (let i = 0;  i < category.length; i++) {
-    const boutton = category[i];
-    const bouttonElements = document.createElement("button");
-    bouttonElements.dataset.id = boutton.id;
-    bouttonElements.innerText = boutton.name
-    bouttonFiltrer.appendChild(bouttonElements);
-    bouttonElements.addEventListener("click", function (event){
-        const idCategories = Number(event.target.dataset.id);
-        const projetsFiltrees = projets.filter(function (projet){
-            return projet.categoryId === idCategories;
-   });
-    document.querySelector(".gallery").innerHTML = "";
-    genererProjets(projetsFiltrees);
-    activerBouton(event.target);
+const categories = await reponseCategories.json();
+
+function filtrerGallery(categories) {
+    const bouttonFiltres = document.querySelector(".btn-filtres");
+
+    categories.forEach(cat => {
+        const bouttonElements = document.createElement("button");
+        bouttonElements.dataset.id = cat.id;
+        bouttonElements.innerText = cat.name
+        bouttonFiltres.appendChild(bouttonElements);
+
+        bouttonElements.addEventListener("click", function (event){
+            const idCategories = Number(event.target.dataset.id);
+            const projetsFiltres = projets.filter(function (projet){
+                return projet.categoryId === idCategories;
+            });
+        document.querySelector(".gallery").innerHTML = "";
+        genererProjets(projetsFiltres);
+        activerBouton(event.target);
+        });
 });
 }
+
+filtrerGallery(categories)
 
 // Activer le bouton "Tous" au chargement
 activerBouton(boutonTous);
 
+
+function activerModeAdmin () {
+    const token = localStorage.getItem("token");
+    if (token) {
+        document.body.classList.add("admin-mode");
+        const modifierLogin = document.querySelector(".login")
+        modifierLogin.innerText = "logout"
+        modifierLogin.addEventListener ("click", function() {
+            localStorage.removeItem("token");
+        })
+    }
+}
+
+activerModeAdmin()

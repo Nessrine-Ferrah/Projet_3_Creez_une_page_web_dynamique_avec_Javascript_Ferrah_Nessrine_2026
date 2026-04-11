@@ -57,10 +57,10 @@ body {
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin: 50px 0;
 }
 section {
-	margin: 50px 0
+	margin: 50px 0;
 }
 
 h1{
@@ -136,7 +136,6 @@ li a:hover {
 }
 #portfolio h2 {
 	text-align: center;
-	margin-bottom: 1em;
 }
 .gallery {
 	width: 100%;
@@ -266,3 +265,39 @@ footer nav ul {
 	color: white !important;
 }
 
+/****** Mode édition ***************/
+
+.mode_edition p {
+	color: white;
+	font-size: 16px;
+}
+
+
+.titre-edition {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-top: 100px;
+	gap: 30px;
+}
+
+.titre-edition p {
+	display: none;
+}
+
+.admin-mode .mode_edition{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 59px;
+	width: 100% ;
+	background-color: black;
+}
+
+.admin-mode .modifier {
+	display: block;
+}
+
+.admin-mode button {
+	display: none;
+}
