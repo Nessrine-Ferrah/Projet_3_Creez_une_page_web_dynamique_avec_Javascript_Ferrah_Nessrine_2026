@@ -28,6 +28,9 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;
 }
+
+* {box-sizing: border-box;}
+
 body {
 	line-height: 1;
 	background-color: #FFFEF8;
@@ -197,7 +200,7 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
-
+/************** Formulaire login ***********/
 #form-login  {
 	width: 50%;
 	margin: auto;
@@ -278,12 +281,17 @@ footer nav ul {
 	align-items: center;
 	justify-content: center;
 	padding-top: 100px;
-	padding-bottom: 80px;
 	gap: 30px;
 }
 
-.titre-edition p {
+.admin-mode .titre-edition{
+	padding-bottom: 80px;
+}
+
+.titre-edition a {
 	display: none;
+	color: inherit;
+	text-decoration: none;
 }
 
 .admin-mode .mode_edition {
@@ -302,4 +310,166 @@ footer nav ul {
 .admin-mode .btn-filtres {
 	display: none;
 	
+}
+
+/************** fenêtre modale *************/
+.style-modale {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modale-wrapper {
+	overflow: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #FFFFFF;
+	width: 630px;
+	max-width: calc(100vw - 20px);
+	max-height: calc(100vh - 20px);
+	border-radius: 10px;
+	padding: 20px 20px;
+}
+.modale-wrapper [type="submit"],
+.btn-ajout-photo  {
+	height: 36px;
+	width: 237px;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	font-size: 14px;
+}
+
+.modale-wrapper h3 {
+	display: flex;
+	justify-content: center;
+	font-size: 26px;
+	font-family: Work Sans;
+}
+
+.ligne {
+	border: 1px solid #B3B3B3;
+	width: 420px;
+}
+
+/************** button-modal *********/
+.button-modal {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+}
+/****** Close modale ********/
+.close-modal i {
+	font-size: 24px;
+}
+
+.close-modal {
+	margin-left: auto;
+}
+
+.close-modal, .retour-modal {
+	border: none;
+	background-color: transparent;
+}
+/******** Retour modale *****/
+.fa-arrow-left {
+	font-size: 21px;
+}
+
+
+/************** modale zone1 et zone 2 *************/
+
+.modal-zone1, 
+.modal-zone2 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+/************** modale-zone1 **************/
+.projets-delete {
+	height: auto;
+	width: 420px;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.btn-ajout-photo {
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	text-align: center;
+	border-radius: 60px;
+}
+
+/************** modale-zone2 **************/
+/****** Input *******/
+.modal-zone2 form {
+	margin-top: 40px;
+	text-align: left;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+}
+
+.modal-zone2 form input, #Categorie {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+.champs-form {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 30px;
+	margin-top: 15px;
+	gap: 10px;
+}
+/******* Cacher modale zone 1, zone 2 et retour-modal (flèche)***/
+.modal-zone1,
+.modal-zone2,
+.retour-modal {
+	display: none;
+}
+
+/****** fomulaire Ajout photo *******/
+.ajout-photo {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 420px;
+	height: 169px;
+	background-color: #E8F1F6;
+	border-radius: 3px;
+	gap: 10px;
+}
+
+.ajout-photo i {
+	font-size: 76px;
+}
+.ajout-photo button {
+	border: none;
+	background-color: #CBD6DC;
+	border-radius: 50px;
+	color: #306685;
+	font-family: Work Sans;
+	font-size: 14px;
+	width: 173px;
+	height: 36px;
+}
+
+.ajout-photo p {
+	font-size: 10px;
+	font-family: Work Sans;
+	color: #444444;
 }
