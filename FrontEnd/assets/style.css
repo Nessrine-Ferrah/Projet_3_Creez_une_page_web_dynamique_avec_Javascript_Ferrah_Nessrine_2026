@@ -52,11 +52,15 @@ table {
 }
 /** end reset css**/
 body {
-	max-width: 1140px;
-	margin:auto;
 	font-family: 'Work Sans' ;
 	font-size: 14px;
 }
+
+.main-container {
+	max-width: 1140px;
+	margin:auto;
+}
+
 header {
 	display: flex;
 	justify-content: space-between;
@@ -150,8 +154,9 @@ li a:hover {
 
 .gallery img {
 	width: 100%;
-
+	margin-bottom: 10px;
 }
+
 #contact {
 	width: 50%;
 	margin: auto;
@@ -198,7 +203,8 @@ input[type="submit"]{
 footer nav ul {
 	display: flex;
 	justify-content: flex-end;
-	margin: 2em
+	margin: 2em;
+	background-color: white;
 }
 /************** Formulaire login ***********/
 #form-login  {
@@ -400,7 +406,6 @@ footer nav ul {
     gap: 10px;
 	margin-top: 30px;
 	margin-bottom: 30px;
-	
 	max-width: 420px;
 }
 .projets-delete figure img {
@@ -436,7 +441,7 @@ footer nav ul {
 .btn-delete i{
 	font-size: 10px;
 }
-/******* btn ajouter photo µµ***/
+/******* btn ajouter photo ***/
 .btn-ajout-photo {
 	font-family: 'Syne';
 	font-weight: 700;
@@ -470,6 +475,9 @@ footer nav ul {
 	margin-top: 15px;
 	gap: 10px;
 }
+
+
+
 /******* Cacher modale zone 1, zone 2 et retour-modal (flèche)***/
 .modal-zone1,
 .modal-zone2,
@@ -478,7 +486,7 @@ footer nav ul {
 }
 
 /****** fomulaire Ajout photo *******/
-.ajout-photo {
+.ajouter-photo {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -490,22 +498,37 @@ footer nav ul {
 	gap: 10px;
 }
 
-.ajout-photo i {
+.ajouter-photo i {
 	font-size: 76px;
 }
-.ajout-photo button {
+
+input[type="file"] {
+	display: none;
+}
+.ajouter-photo label {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	border: none;
 	background-color: #CBD6DC;
 	border-radius: 50px;
 	color: #306685;
 	font-family: Work Sans;
 	font-size: 14px;
+	font-weight: 500;
 	width: 173px;
 	height: 36px;
 }
 
-.ajout-photo p {
+.ajouter-photo p {
 	font-size: 10px;
 	font-family: Work Sans;
 	color: #444444;
+}
+
+/******* Afficher image js ********/
+.style-preview {
+	display: none;
+	height: 169px;
+	width: 129px;
 }
