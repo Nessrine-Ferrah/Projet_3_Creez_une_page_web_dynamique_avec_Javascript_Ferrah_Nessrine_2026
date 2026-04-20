@@ -476,7 +476,21 @@ footer nav ul {
 	gap: 10px;
 }
 
+.submit-valider {
+	background-color: #A7A7A7 !important;
+}
 
+/**** message d'erreur ****/
+
+.message-erreur {
+	display: none;
+	padding-top: 10px;
+	width: 100%;
+	height: 35px;
+	background-color: rgb(241, 216, 216);
+	text-align: center;
+	color: red;
+}
 
 /******* Cacher modale zone 1, zone 2 et retour-modal (flèche)***/
 .modal-zone1,

@@ -95,6 +95,7 @@ function FermerModal () {
     const CacherPreview = document.querySelector(".style-preview")
     CacherPreview.src = "";
     CacherPreview.style.display = "none";
+    messageErreur.style.display = "none";
     elementsCacher.forEach(el => {
         el.style.display = "flex"; 
     });
@@ -176,6 +177,57 @@ function genererOptionCategories(categories) {
  genererOptionCategories(categories)
 
 
- 
+ // ********** Vérigier les champs 
+
+const champsModal = document.querySelectorAll(".champs-modal");
+const submitValider = document.querySelector(".submit-valider");
+const messageErreur = document.querySelector(".message-erreur");
+
+function verifierChampsRemplis() {
+    champsModal.forEach(champ => {
+        champ.addEventListener("input", verifier);
+        champ.addEventListener("change", verifier);
+    });
+ }
+
+function verifier() {
+     const tousRemplis = Array.from(champsModal).every(c => {
+            if (c.type === "file") {
+                return c.files.length > 0;
+            }
+            return c.value.trim() !== "";
+        });
+
+        if (tousRemplis) {
+            submitValider.disabled = false;
+            submitValider.classList.remove("submit-valider");
+            afficherErreur();
+            return;
+        } else {
+            submitValider.disabled = true;
+            submitValider.classList.add("submit-valider");
+            afficherErreur("Veuillez remplir tous les champs.");
+            return;
+        }
+
+}
+verifierChampsRemplis()
+
+// afficher message d'erreur 
+function afficherErreur (message) {
+    messageErreur.textContent = message;
+    const tousRemplis = Array.from(champsModal).every(c => {
+        if (c.type === "file") {
+            return c.files.length > 0;
+        }
+        return c.value.trim() !== "";
+    });
+
+    if(!tousRemplis) {
+        messageErreur.style.display = "block";
+    } else {
+         messageErreur.style.display = "none";
+    };
+}
  
 
