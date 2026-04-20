@@ -231,3 +231,41 @@ function afficherErreur (message) {
 }
  
 
+// envoyer la requete http avec la méthode POST
+ function ajoutListenerEnvoyerFormulaire () {
+    const formulaireModal = document.querySelector(".formulaire-modal");
+    const titre = document.getElementById("titre");
+
+    formulaireModal.addEventListener("submit", async function (event){
+        event.preventDefault();
+        const chargeUtile  = new FormData();
+        chargeUtile.append("image",inputFile.files[0]);
+        chargeUtile.append("title", titre.value);
+        chargeUtile.append("category", selectCategorie.value);
+
+        // Appel de la fonction fetch avec toutes les informations nécessaires
+        const token = localStorage.getItem("token");
+        const reponsePostWorks = await fetch("http://localhost:5678/api/works", {
+            method: "POST",
+            headers: {"Authorization": `Bearer ${token}`},
+            body: chargeUtile // En formdata donc pas de content-type
+        });
+
+        if(reponsePostWorks.ok){
+            // Récuperer le projet depuis la reponse de l'API
+            const newProjet = await reponsePostWorks.json();
+            // ajouter le projet dans la gallery
+            projets.push(newProjet);
+            // Mettre à jour les galeries
+            genererProjets(projets);
+            genererProjetsModal(projets);
+            // Fermer la modale
+            FermerModal();
+
+        } else {
+            alert("Erreur lors de l'ajout du projet");
+        };
+    });
+ }
+
+ ajoutListenerEnvoyerFormulaire ()
