@@ -146,6 +146,9 @@ function changerInputFile () {
     inputFile.addEventListener("change", function(event){
         // Si un fichier est sélectionné
         if (inputFile.files.length > 0) {
+            if (!verifierFormatTailleFile()) {
+                return;
+            }
             // Cacher les éléments
             elementsCacher.forEach(el => {
             el.style.display = "none";
@@ -177,12 +180,52 @@ function genererOptionCategories(categories) {
  genererOptionCategories(categories)
 
 
- // ********** Vérigier les champs 
+ // ********** Vérigier les champs ********************/
 
 const champsModal = document.querySelectorAll(".champs-modal");
 const submitValider = document.querySelector(".submit-valider");
 const messageErreur = document.querySelector(".message-erreur");
 
+// Champs file format et taille 
+function verifierFormatTailleFile () {
+    const imageSelect = inputFile.files[0];
+    if (!imageSelect) return false ;
+
+    // définir le format et la taille du fichier
+    const formatImage = ["image/jpg", "image/png"];
+    // navigateur mesure les fichiers en octets, 4mo = 4 x 1024 ko <=> 1ko = 1024 octets <=> 4mo = 4 x 1024 x 1024 /1 <=> 4mo = 4 x 1024 x 1024 octets
+    const TailleMax = 4 * 1024 * 1024; 
+
+    if (!formatImage.includes(imageSelect.type)) {
+        AfficherErreurInputFile("Format invalide : JPG ou PNG uniquement.");
+        inputFile.value = "";
+        return false;
+    }
+    if (imageSelect.size > TailleMax) {
+        AfficherErreurInputFile("L’image ne doit pas dépasser 4 Mo.");
+        inputFile.value = "";
+        return false;
+    }
+
+    CacherErreurFile();
+    return true;
+}
+
+// fonction qui affcihe les messages d'erreur pour le input file
+function AfficherErreurInputFile (message) {
+    const messageErreur = document.querySelector(".erreurFile")
+    messageErreur.textContent = message;
+    messageErreur.style.display = "block";
+}
+// fonction qui cache les messages d'erreur pour le input file
+function CacherErreurFile () {
+    const messageErreur = document.querySelector(".erreurFile")
+     messageErreur.textContent = "";
+     messageErreur.style.display = "none";
+}
+
+
+// vérifier champs remplis
 function verifierChampsRemplis() {
     champsModal.forEach(champ => {
         champ.addEventListener("input", verifier);

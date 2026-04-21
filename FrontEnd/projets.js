@@ -82,19 +82,19 @@ function activerModeAdmin () {
         modifierLogin.addEventListener ("click", function() {
             localStorage.removeItem("token");
             désactiverModeAdmin(false);
-        })
+        });
     } else {
         désactiverModeAdmin(true);
-    }
+    };
 }
 
 activerModeAdmin()
 
-function désactiverModeAdmin(sessionExpiree = false) {
+function désactiverModeAdmin(sessionExpiree) {
     document.body.classList.remove("admin-mode");
     const modifierLogin = document.querySelector(".login");
     modifierLogin.innerText = "login"
-    if(sessionExpiree) {
+    if(sessionExpiree === true){
         alert("Votre session a expiré");
     };
 }

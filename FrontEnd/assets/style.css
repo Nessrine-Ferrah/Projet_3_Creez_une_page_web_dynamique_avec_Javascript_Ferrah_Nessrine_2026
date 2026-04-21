@@ -546,3 +546,16 @@ input[type="file"] {
 	height: 169px;
 	width: 129px;
 }
+
+/***** afficher message erreur file ****/
+.ajouter-photo .erreurFile {
+	display: none;
+	padding-top: 8px;
+	width: 100%;
+	height: 35px;
+	background-color: rgb(241, 216, 216);
+	text-align: center;
+	color: red;
+	font-family: Work Sans;
+	font-size: 12px;
+}
