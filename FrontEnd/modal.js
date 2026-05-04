@@ -108,13 +108,27 @@ function FermerModal () {
 }
 
 function ajoutListenerFermerModal() {
-    const btnCloseModal = document.querySelector(".close-modal")
+    const btnCloseModal = document.querySelector(".close-modal");
+    const overlay = document.querySelector(".style-modale");
+    const modaleWrapper = document.querySelector(".modale-wrapper");
 
     btnCloseModal.addEventListener("click", function(event){
     event.preventDefault();
     FermerModal()
     });
+
+    overlay.addEventListener("click", function(event){
+    event.preventDefault();
+    FermerModal()
+    });
+
+    modaleWrapper.addEventListener("click", function (event) {
+    //  Méthode native disponible sur tous les objets Event 
+    // empêche l’événement de remonter aux éléments parents.
+    event.stopPropagation();
+    });
 }
+
 ajoutListenerFermerModal();
 
 
@@ -189,7 +203,7 @@ const messageErreur = document.querySelector(".message-erreur");
 // Champs file format et taille 
 function verifierFormatTailleFile () {
     const imageSelect = inputFile.files[0];
-    if (!imageSelect) return false ;
+    if (!imageSelect) return false;
 
     // définir le format et la taille du fichier
     const formatImage = ["image/jpg", "image/png"];
