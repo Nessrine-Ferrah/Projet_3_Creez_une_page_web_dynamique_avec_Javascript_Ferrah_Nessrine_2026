@@ -18,7 +18,7 @@ function ajoutListenerLogin() {
             headers: { "Content-Type": "application/json" },
             body: chargeUtile
         });
-
+        
         if (!reponseLogin.ok) {
             // afficher erreur
             alert("Email ou mot de passe incorrect");
@@ -30,7 +30,6 @@ function ajoutListenerLogin() {
         localStorage.setItem("token", donnees.token);
         // Redirection
         window.location.href = "index.html";
-
     });
 }
 

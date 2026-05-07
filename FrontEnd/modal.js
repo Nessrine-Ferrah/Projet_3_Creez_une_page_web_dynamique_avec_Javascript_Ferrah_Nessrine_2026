@@ -289,7 +289,7 @@ function afficherErreur (message) {
  
 
 // envoyer la requete http avec la méthode POST
- function ajoutListenerEnvoyerFormulaire () {
+function ajoutListenerEnvoyerFormulaire () {
     const formulaireModal = document.querySelector(".formulaire-modal");
     const titre = document.getElementById("titre");
 
@@ -318,11 +318,11 @@ function afficherErreur (message) {
             genererProjetsModal(projets);
             // Fermer la modale
             FermerModal();
-
         } else {
             alert("Erreur lors de l'ajout du projet");
         };
     });
- }
+}
 
- ajoutListenerEnvoyerFormulaire ()
+ajoutListenerEnvoyerFormulaire ()
+
