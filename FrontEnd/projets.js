@@ -3,10 +3,11 @@ const reponseWorks = await fetch('http://localhost:5678/api/works');
 let projets = await reponseWorks.json();
 
 // Fonction qui génère toute la page web
-function genererProjets(projets) {
+export function genererProjets(projets) {
         // Récupération de l'élément du DOM qui accueillera les projets
         const gallery = document.querySelector(".gallery");
-
+        gallery.innerHTML = "";
+        
         projets.forEach(projet => {
             const projetElement = document.createElement("figure");
 
@@ -71,6 +72,7 @@ activerBouton(boutonTous);
 
 
 function activerModeAdmin () {
+    const lienModifier = document.querySelector(".modifier");
     const token = localStorage.getItem("token");
     if (token) {
         document.body.classList.add("admin-mode");
@@ -79,7 +81,9 @@ function activerModeAdmin () {
         modifierLogin.addEventListener ("click", function() {
             localStorage.removeItem("token");
         });
-    };
+    } else {
+        lienModifier.style.display = "none";
+    }
 }
 
 activerModeAdmin()

@@ -1,16 +1,21 @@
 /******************* Afficher et fermer la modale ******************/
+import { genererProjets } from "./projets.js";
 
 // Récupération des travaux  depuis l'API 
 const reponseWorks = await fetch('http://localhost:5678/api/works');
 let projets = await reponseWorks.json();
 
    //  Fonction qui génère les projets dans la modale
+/**
+ * explication de l'objet
+ * @param {Object} projets 
+ */
 function genererProjetsModal(projets) {
-     // Récupération de l'élément du DOM qui accueillera les projets
-        const projetsDelete = document.querySelector(".projets-delete");
-        projetsDelete.innerHTML = "";
+    // Récupération de l'élément du DOM qui accueillera les projets
+    const projetsDelete = document.querySelector(".projets-delete");
+    projetsDelete.innerHTML = "";
 
-        projets.forEach(projet => {
+    projets.forEach(projet => {
         const projetElement = document.createElement("figure");
 
         const imageElement = document.createElement("img");
@@ -55,10 +60,10 @@ async function supprimerProjet (id) {
         genererProjets(projets);
         genererProjetsModal(projets);
     } else {
-         alert("Erreur suppression");
-            return ;
+        alert("Erreur suppression");
+        return ;
     };
-    }
+}
     
 
 // ********************* MODALE *********************
@@ -78,7 +83,7 @@ function OuvrirModal() {
     modalZone1.style.display = "flex";
 
     genererProjetsModal(projets);
-    })
+    });
 }
 
 OuvrirModal()
